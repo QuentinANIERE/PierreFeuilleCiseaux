@@ -3,7 +3,12 @@ import time
 import platform
 from random import randint
 
-score = 0
+#On récupére le score dans le ficher sauvegarde.txt
+if os.path.isfile("sauvegarde.txt"):
+    fichier = open("sauvegarde.txt", "r")
+    score = int(fichier.read())
+else:
+    score = 0
 
 #Fonction qui permet d'effacer la console
 def clear():
@@ -58,6 +63,11 @@ def rejouer():
     #On efface l'affichage du résultat 
     time.sleep(2)
     clear()
+
+    #On écrit le score dans un fichier txt
+    fichier = open("sauvegarde.txt", "w")
+    fichier.write(str(score)) #On oublie de convertir le score en string
+    fichier.close()
 
     print("Votre score est actuellement de", str(score) +".")
     time.sleep(2)
