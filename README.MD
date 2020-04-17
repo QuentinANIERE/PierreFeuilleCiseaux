@@ -4,6 +4,6 @@ Ce projet est un jeu, le "Pierre, Feuille, Ciseaux !". Je l'ai réalisé dans un
 
 # Changelog
 
-  ## Version 1
+- ## Version 1
 
-   Version initiale du projet, assez minimaliste mais tout à fait fonctionelle.
+  Version initiale du projet, assez minimaliste mais tout à fait fonctionelle.
