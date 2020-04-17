@@ -1,8 +1,21 @@
+import os
+import time
+import platform
 from random import randint
+
+#Fonction qui permet d'effacer la console
+def clear():
+    if platform.system() == "Windows":
+    #Si le script est executé sous windows
+        os.system("cls")
+    elif platform.system() == "Linux":
+    #Si le script est executé sous Linux
+        os.system("clear")
 
 #Message de bienvenue
 print('Bienvenue dans le jeu du "Pierre, Feuille, Ciseaux" !')
-print() #Saut de ligne
+time.sleep(1.5)
+clear()
 
 #Fonction qui détermine le choix de l'ordi
 def choixOrdi():
@@ -14,6 +27,7 @@ def choixOrdi():
 #Fonction qui demande à l'user son choix et vérifie si l'entrée est valide
 def choixUser():
     choixDeUser = input("Que voulez faire ? (Pierre, Feuille, Ciseaux ?)\n>>> ")
+    clear()
 
     #On vérifie que l'entrée de l'user est correcte 
     listeEntresCorrectes = ["Pierre", "pierre", "p", "Feuille", "feuille", "f", "Ciseaux", "ciseaux", "ciseau","Ciseau", "c"]
@@ -22,7 +36,8 @@ def choixUser():
     if choixDeUser not in listeEntresCorrectes:
     #On vérifie si l'entrée de l'utilisateur n'est pas dans la liste des choix possibles
         print("Votre choix n'est pas valide !")
-        print()
+        time.sleep(2)
+        clear()
         choixUser()
     
     elif choixDeUser not in listeEntresValide:
@@ -38,18 +53,23 @@ def choixUser():
 
 #Fonction qui demande à l'utilisateur si il veut rejouer 
 def rejouer():
-    print() #On laisse un ligne vide
+    time.sleep(2)
+    clear()
     choix = input("Voulez vous rejouer ? (Oui|Non) \n>>> ")
+    clear()
 
     if choix == "Oui" or  choix == "oui" or  choix == "o":
         jeu()
 
     elif choix == "Non" or choix == "non" or choix == "n":
         print("Merci d'avoir joué, à bientôt !")
-        input("Appuyer sur entrée pour quitter")
+        time.sleep(2)
+        clear()
 
     else:
         print("Votre choix n'est pas valide !")
+        time.sleep(2)
+        clear()
         rejouer()
 
 #Fonction qui contient le jeu en lui même
