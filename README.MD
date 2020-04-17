@@ -7,3 +7,9 @@ Ce projet est un jeu, le "Pierre, Feuille, Ciseaux !". Je l'ai réalisé dans un
 - ## Version 1
 
   Version initiale du projet, assez minimaliste mais tout à fait fonctionelle.
+
+- ## Version 2
+
+  - Améloriation de l'expérience utilisateur grâce au nettoyage de la console (Compatible avec Windows et Linux)
+  - Ajout d'un système de score
+  - Ajout d'un système de sauvegarde
