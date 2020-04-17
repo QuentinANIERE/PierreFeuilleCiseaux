@@ -13,7 +13,6 @@ def choixOrdi():
 
 #Fonction qui demande à l'user son choix et vérifie si l'entrée est valide
 def choixUser():
-    global choixDeUser
     choixDeUser = input("Que voulez faire ? (Pierre, Feuille, Ciseaux ?)\n>>> ")
 
     #On vérifie que l'entrée de l'user est correcte 
@@ -35,6 +34,34 @@ def choixUser():
         else: 
             choixDeUser = "Ciseaux"
 
-#choixUser()
+    return choixDeUser
 
-#Fonction qui compare le choix de l'ordi et de l'user
+#Fonction qui contient le jeu en lui même
+def jeu():
+    #On inscrit le choix de l'user dans des variables afin qu'elle ne changent à chaque demande
+    choixDeUser = choixUser()
+    choixDeOrdi = choixOrdi()
+
+    #En cas d'égalité
+    if  choixDeUser == choixDeOrdi:
+        print("Égalité !")
+
+    #Bloc if si le choix de l'ordi est "Pierre"
+    if choixDeOrdi == "Pierre" and choixDeUser == "Feuille" and choixDeUser != choixDeOrdi:
+        print("L'ordinateur à choisi", choixDeOrdi + ". Vous avez gagné !")
+    elif choixDeOrdi == "Pierre" and choixDeUser != "Feuille" and choixDeUser != choixDeOrdi:
+        print("L'ordinateur à choisi", choixDeOrdi +". L'ordinateur a gagné...")
+
+    #Bloc if si le choix de l'ordi est "Feuille"
+    if choixDeOrdi == "Feuille" and choixDeUser == "Ciseaux" and choixDeUser != choixDeOrdi:
+       print("L'ordinateur à choisi", choixDeOrdi + ". Vous avez gagné !")
+    elif choixDeOrdi == "Feuille" and choixDeUser != "Ciseaux" and choixDeUser != choixDeOrdi:
+        print("L'ordinateur à choisi", choixDeOrdi +". L'ordinateur a gagné...")
+
+    #Bloc if si le choix de l'ordi est "Ciseaux"
+    if choixDeOrdi == "Ciseaux" and choixDeUser == "Pierre" and choixDeUser != choixDeOrdi:
+        print("L'ordinateur à choisi", choixDeOrdi + ". Vous avez gagné !")
+    elif choixDeOrdi == "Ciseaux" and choixDeUser != "Pierre" and choixDeUser != choixDeOrdi:
+        print("L'ordinateur à choisi", choixDeOrdi +". L'ordinateur a gagné...")
+
+jeu()
