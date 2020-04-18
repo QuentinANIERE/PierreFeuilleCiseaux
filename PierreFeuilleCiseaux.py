@@ -32,43 +32,28 @@ cadre.pack(side=BOTTOM, pady=10)
 def clicPierre(p):
     jeu("pierre")
 
-#On utilise une fonction car on pourra recreer l'image apres sa suppresion
-def creationPierre():
-    global pierre
-    #On met l'image dans label afin de pouvoir utiliser la méthode bind
-    pierre = Label(fen, bg="grey", image=photoPierre)
-    pierre.pack(side=LEFT, padx=50)
-    pierre.bind('<Button-1>', clicPierre) 
-
+#On met l'image dans label afin de pouvoir utiliser la méthode bind
+pierre = Label(fen, bg="grey", image=photoPierre)
+pierre.pack(side=LEFT, padx=50)
+pierre.bind('<Button-1>', clicPierre) 
 
 #Fonction qui sera executé si on clique sur la feuille
 def clicFeuille(f):
     jeu("peuille")
 
-#On utilise une fonction car on pourra recreer l'image apres sa suppresion
-def creationFeuille():
-    global feuille
-    #On met l'image dans label afin de pouvoir utiliser la méthode bind
-    feuille = Label(fen, bg="grey", image=photoFeuille)
-    feuille.pack(side=LEFT, padx=10)
-    feuille.bind('<Button-1>', clicFeuille) 
+#On met l'image dans label afin de pouvoir utiliser la méthode bind
+feuille = Label(fen, bg="grey", image=photoFeuille)
+feuille.pack(side=LEFT, padx=10)
+feuille.bind('<Button-1>', clicFeuille) 
 
 #Fonction qui sera executé si on clique sur la feuille
 def clicCiseaux(c):
     jeu("ciseaux")
 
-#On utilise une fonction car on pourra recreer l'image apres sa suppresion
-def creationCiseaux():
-    global ciseaux
-    #On met l'image dans label afin de pouvoir utiliser la méthode bind
-    ciseaux = Label(fen, bg="grey", image=photoCiseaux)
-    ciseaux.pack(side=LEFT, padx=50)
-    ciseaux.bind('<Button-1>', clicCiseaux) 
-
-#On execute les fonctions pour créer les images
-creationPierre()
-creationFeuille()
-creationCiseaux()
+#On met l'image dans label afin de pouvoir utiliser la méthode bind
+ciseaux = Label(fen, bg="grey", image=photoCiseaux)
+ciseaux.pack(side=LEFT, padx=50)
+ciseaux.bind('<Button-1>', clicCiseaux) 
 
 #Fonction qui détermine le choix de l'ordi
 def choixOrdi():
@@ -85,13 +70,28 @@ fichier.write(str(score)) #On oublie pas de convertir le score en string
 fichier.close()
 """
 
+#Fonction rejouer
+def rejouer():
+    global policeTitre, titre, sousTitre, bouttonRejouer, cadre, pierre, feuille, ciseaux
+
+    #On fait disparaitre tout l'affichage de la partie précédente
+    titre.pack_forget()
+    sousTitre.pack_forget()
+    bouttonRejouer.pack_forget()
+
+    #On fait re-appaitre le cadre et les bouttons
+    cadre.pack(side=BOTTOM, pady=10)
+    pierre.pack(side=LEFT, padx=50)
+    feuille.pack(side=LEFT, padx=10)
+    ciseaux.pack(side=LEFT, padx=50)
+
 #Polices personalisées pour le titre et le sous titre
 policeTitre = tkFont.Font(family="Verdanna",size=24,weight="bold")
 policeSousTitre = tkFont.Font(family="Times", size=16)
 
 #Fonction qui affiche le résultat
 def afficher(choixDeOrdi, victoire):
-    global policeTitre
+    global policeTitre, titre, sousTitre, bouttonRejouer
 
     #Le titre
     titre = Label(fen, bg="Grey", font=policeTitre, text=" ")
@@ -109,6 +109,10 @@ def afficher(choixDeOrdi, victoire):
     texteSousTitre = "L'ordinateur avait choisi " + choixDeOrdi + "."
     sousTitre = Label(fen, bg="Grey", text=texteSousTitre, font=policeSousTitre)
     sousTitre.pack()
+
+    #Le bouton rejouer
+    bouttonRejouer = Button(fen, text="Rejouer", command=rejouer)
+    bouttonRejouer.pack(side=BOTTOM, pady=15)
 
 #Fonction qui contient le jeu en lui même
 def jeu(choixDeUser):
