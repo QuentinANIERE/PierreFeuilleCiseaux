@@ -85,12 +85,15 @@ fichier.write(str(score)) #On oublie pas de convertir le score en string
 fichier.close()
 """
 
-#Police personalisée pour le titre
+#Polices personalisées pour le titre et le sous titre
 policeTitre = tkFont.Font(family="Verdanna",size=24,weight="bold")
+policeSousTitre = tkFont.Font(family="Times", size=16)
 
 #Fonction qui affiche le résultat
-def afficher(choixdeOrdi, victoire):
+def afficher(choixDeOrdi, victoire):
     global policeTitre
+
+    #Le titre
     titre = Label(fen, bg="Grey", font=policeTitre, text=" ")
 
     if victoire == True:
@@ -101,6 +104,11 @@ def afficher(choixdeOrdi, victoire):
        titre.configure(text="Égalité !")
 
     titre.pack(side=TOP, pady=10)    
+
+    #Le "sous titre"
+    texteSousTitre = "L'ordinateur avait choisi " + choixDeOrdi + "."
+    sousTitre = Label(fen, bg="Grey", text=texteSousTitre, font=policeSousTitre)
+    sousTitre.pack()
 
 #Fonction qui contient le jeu en lui même
 def jeu(choixDeUser):
