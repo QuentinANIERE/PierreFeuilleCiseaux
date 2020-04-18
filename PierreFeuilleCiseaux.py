@@ -62,21 +62,14 @@ def choixOrdi():
     choixDeOrdi = choixPossibles[indexChoix]
     return choixDeOrdi
 
-
-"""
-#On écrit le score dans un fichier txt
-fichier = open("sauvegarde.txt", "w")
-fichier.write(str(score)) #On oublie pas de convertir le score en string
-fichier.close()
-"""
-
 #Fonction rejouer
 def rejouer():
-    global policeTitre, titre, sousTitre, bouttonRejouer, cadre, pierre, feuille, ciseaux
+    global policeTitre, titre, sousTitre, labelScore, bouttonRejouer, cadre, pierre, feuille, ciseaux
 
     #On fait disparaitre tout l'affichage de la partie précédente
     titre.pack_forget()
     sousTitre.pack_forget()
+    labelScore.pack_forget()
     bouttonRejouer.pack_forget()
 
     #On fait re-appaitre le cadre et les bouttons
@@ -91,13 +84,14 @@ policeSousTitre = tkFont.Font(family="Times", size=16)
 
 #Fonction qui affiche le résultat
 def afficher(choixDeOrdi, victoire):
-    global policeTitre, titre, sousTitre, bouttonRejouer
+    global policeTitre, titre, sousTitre, labelScore, bouttonRejouer, score
 
     #Le titre
     titre = Label(fen, bg="Grey", font=policeTitre, text=" ")
 
     if victoire == True:
         titre.configure(text="Bravo !")
+        score += 1
     elif victoire == False:
         titre.configure(text="Perdu...")
     else:
@@ -105,10 +99,20 @@ def afficher(choixDeOrdi, victoire):
 
     titre.pack(side=TOP, pady=10)    
 
+    #On sauvegarde le score dans un fichier txt
+    fichier = open("sauvegarde.txt", "w")
+    fichier.write(str(score)) #On oublie pas de convertir le score en string
+    fichier.close()
+
     #Le "sous titre"
     texteSousTitre = "L'ordinateur avait choisi " + choixDeOrdi + "."
     sousTitre = Label(fen, bg="Grey", text=texteSousTitre, font=policeSousTitre)
     sousTitre.pack()
+
+    #Le score
+    texteScore = "Votre score est de " + str(score) +"."
+    labelScore = Label(fen, bg="Grey", text=texteScore)
+    labelScore.pack()
 
     #Le bouton rejouer
     bouttonRejouer = Button(fen, text="Rejouer", command=rejouer)
