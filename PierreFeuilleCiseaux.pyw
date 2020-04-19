@@ -39,7 +39,7 @@ pierre.bind('<Button-1>', clicPierre)
 
 #Fonction qui sera executé si on clique sur la feuille
 def clicFeuille(f):
-    jeu("peuille")
+    jeu("feuille")
 
 #On met l'image dans label afin de pouvoir utiliser la méthode bind
 feuille = Label(fen, bg="grey", image=photoFeuille)
