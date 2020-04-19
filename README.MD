@@ -17,3 +17,7 @@ Ce projet est un jeu, le "Pierre, Feuille, Ciseaux !". Je l'ai réalisé dans un
 - ## Version 3
 
   Cette version reprend toutes les fonctionalités des branches précédentes, mais elle avec une interface Graphique réalisé avec Tkinter
+  
+- ## Version 4
+
+  Correction d'un bug
