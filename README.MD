@@ -1,6 +1,6 @@
 # Pierre, Feuille, Ciseaux !
 
-Ce projet est un jeu, le "Pierre, Feuille, Ciseaux !". Je l'ai réalisé dans un cadre personel afin d'exercer au langage Python et plus particulièrement à Tkinter.
+Ce projet est un jeu, le "Pierre, Feuille, Ciseaux !". Je l'ai réalisé dans un cadre personel afin d'exercer au langage Python et plus particulièrement à Tkinter. Il fonctionne parfaitement, mais je compte l'améliorer un jour, en rajoutant un mode multijoueur et en améliorant l'algorithme de choix de l'ordinateur.
 
 # Changelog
 
